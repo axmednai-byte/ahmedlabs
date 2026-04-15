@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --background: 230 20% 4%;
+  --foreground: 0 0% 88%;
+  --card: 230 18% 7%;
+  --card-foreground: 0 0% 88%;
+  --popover: 230 18% 7%;
+  --popover-foreground: 0 0% 88%;
+  --primary: 135 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 192 100% 42%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 230 15% 15%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 192 100% 42%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 230 15% 18%;
+  --input: 230 15% 18%;
+  --ring: 135 100% 50%;
+  --radius: 0.5rem;
+  --sidebar-background: 230 18% 5%;
+  --sidebar-foreground: 0 0% 88%;
+  --sidebar-primary: 135 100% 50%;
+  --sidebar-primary-foreground: 0 0% 0%;
+  --sidebar-accent: 230 15% 12%;
+  --sidebar-accent-foreground: 0 0% 88%;
+  --sidebar-border: 230 15% 14%;
+  --sidebar-ring: 135 100% 50%;
+  --chart-1: 135 100% 50%;
+  --chart-2: 192 100% 42%;
+  --chart-3: 35 92% 54%;
+  --chart-4: 0 72% 51%;
+  --chart-5: 270 60% 60%;
+}
+
+.dark {
+  --background: 230 20% 4%;
+  --foreground: 0 0% 88%;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Cyberpunk neon glow effects */
+.neon-green {
+  text-shadow: 0 0 7px #00ff41, 0 0 10px #00ff41, 0 0 21px #00ff41;
+}
+.neon-cyan {
+  text-shadow: 0 0 7px #00d4ff, 0 0 10px #00d4ff, 0 0 21px #00d4ff;
+}
+.neon-red {
+  text-shadow: 0 0 7px #ff3e3e, 0 0 10px #ff3e3e;
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.cursor-blink::after {
+  content: '█';
+  animation: blink 1s infinite;
+  color: hsl(var(--primary));
+}
+
+/* Scanline overlay */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(230 20% 4%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(230 15% 20%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(135 100% 50% / 0.3);
+}
+
+/* Code block styling */
+pre code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 150ms;
+}
+
